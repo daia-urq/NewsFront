@@ -1,0 +1,182 @@
+.Gig-Poster-2022-2023-1-hex {
+    color: #4E74A6;
+}
+
+.Gig-Poster-2022-2023-2-hex {
+    color: #F2EFE9;
+}
+
+.Gig-Poster-2022-2023-3-hex {
+    color: #F2911B;
+}
+
+.Gig-Poster-2022-2023-4-hex {
+    color: #F27405;
+}
+
+.Gig-Poster-2022-2023-5-hex {
+    color: #D92211;
+}
+
+.tarjetas {
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+}
+
+header {
+    background-color: #b82012;
+}
+
+a {
+    color: #F2EFE9 !important;
+    text-decoration: none !important;
+}
+
+
+a.seleccionado {
+    background-color: #F2911B;
+    border-radius: 1rem;
+    font-weight: bold;
+}
+
+.busqueda {
+    border-radius: 0.5rem;
+    border-color: transparent;
+}
+
+.login>li>a {
+    background-color: #D92211;
+    border-radius: 0.5rem;
+    font-weight: 500;
+}
+
+.fs-3 {
+    font-weight: 800;
+}
+
+.card>img {
+    max-height: 20vh;
+    object-fit: cover;
+}
+
+.card-body>h4 {
+    font-size: medium;
+}
+
+.card {
+    background-color: #dbdbdb !important;
+    color: #244166 !important;
+    width: 300px !important;
+    height: 300px !important;
+
+}
+
+/* carga Noticias*/
+form {
+    min-width: 50vw;
+    font-size: medium;
+    font-weight: 700;
+    color: #F27405;
+}
+
+form>div>label {
+    margin-top: 2rem;
+}
+
+#cuerpo {
+    height: 20vh;
+}
+
+.noticias>h1 {
+    padding-top: 2rem;
+}
+
+.noticias {
+    border: 1px solid;
+    border-color: #F27405;
+    border-radius: 1rem;
+    margin-top: 3rem;
+    min-height: 75vh;
+    max-width: 55vw !important;
+    color: #4E74A6;
+    box-shadow: 19px 16px 64px -32px rgba(0, 0, 0, 0.64);
+    -webkit-box-shadow: 19px 16px 64px -32px rgba(0, 0, 0, 0.64);
+    -moz-box-shadow: 19px 16px 64px -32px rgba(0, 0, 0, 0.64);
+}
+
+.btn {
+    margin-top: 1rem;
+    background-color: #F2911B !important;
+    color: #F2EFE9 !important;
+    font-weight: 600 !important;
+    margin-bottom: 1rem;
+}
+
+#cardDetail {
+    background-color: #ffffff !important;
+    width: 70vw !important;
+    min-height: 90vh !important;
+    color: #4E74A6 !important;
+    font-weight: 500;
+    border: none;
+    text-align: justify;
+}
+
+#cardDetail>div>div>div>h2 {
+    color: #F27405 !important;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    font-weight: bold;
+}
+
+#cardDetail>div>div>div>p {
+    text-indent: 3%;
+}
+
+#cardimg {
+    border-radius: 0% !important;
+    object-fit: cover;
+    width: 100%;
+    height: 40vh;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.footer {
+    background-color: #b82012;
+    color: #F2EFE9 !important;
+}
+
+header {
+    min-height: 5vh;
+}
+
+main {
+    min-height: 88vh;
+}
+
+ul.demo {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.navegacion {
+    background-color: #F27405;
+    color: #F2EFE9;
+}
+
+#mensaje{
+    min-height: 4vh;
+    background-color: #4E74A6;
+    color: #F2EFE9;
+}
+
+.agregar{
+    height: 8vh;
+}
+
+.agregar>a>button, .button{
+    background-color: transparent;
+    border: none;
+}
+
