@@ -18,6 +18,12 @@
     color: #D92211;
 }
 
+body{
+    margin: 0%;
+    padding: 0%;
+    box-sizing: border-box;
+}
+
 .tarjetas {
     margin-top: 3rem;
     margin-bottom: 3rem;
@@ -27,7 +33,7 @@ header {
     background-color: #b82012;
 }
 
-a {
+a{
     color: #F2EFE9 !important;
     text-decoration: none !important;
 }
@@ -44,10 +50,22 @@ a.seleccionado {
     border-color: transparent;
 }
 
-.login>li>a {
-    background-color: #D92211;
-    border-radius: 0.5rem;
+#nombre>button{
+    background-color:#ffffff;
+    color: #b82012;
+    border: none;
+    border-radius: 1rem;
     font-weight: 500;
+}
+#nombre>h6{
+    color: #ffffff;
+    margin-right: 1rem;
+    padding-top: 0.3rem ;
+}
+
+header>div>a>span{
+    min-width: max-content;
+    display: block;
 }
 
 .fs-3 {
@@ -68,18 +86,17 @@ a.seleccionado {
     color: #244166 !important;
     width: 300px !important;
     height: 300px !important;
-
 }
 
 /* carga Noticias*/
-form {
+#form{
     min-width: 50vw;
     font-size: medium;
     font-weight: 700;
     color: #F27405;
 }
 
-form>div>label {
+#form>div>label {
     margin-top: 2rem;
 }
 
@@ -142,6 +159,7 @@ form>div>label {
 }
 
 .footer {
+    margin-top: 2rem;
     background-color: #b82012;
     color: #F2EFE9 !important;
 }
@@ -165,18 +183,51 @@ ul.demo {
     color: #F2EFE9;
 }
 
-#mensaje{
-    min-height: 4vh;
+#mensaje, #mensajeAdmin{
+    min-height: 35px;
     background-color: #4E74A6;
     color: #F2EFE9;
+}
+#mensajeAdmin{
+    background-color: #F27405 !important;
 }
 
 .agregar{
     height: 8vh;
+    margin: 1rem;
 }
 
-.agregar>a>button, .button{
+.agregar>button ,.button, .agregar>a>button{
     background-color: transparent;
     border: none;
 }
+.agregar>button, .agregar>a>button{
+    font-size: x-large;
+}
 
+.table{
+    padding: 1rem;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border-radius: 1rem;
+}
+
+table{
+    color: #244166;
+    text-decoration: none;
+    width: 100%;
+    border-color: #F2911B!important;
+}
+
+#formCategoria{
+    width: 90%;
+}
+
+.modal{
+    color: #244166;
+}
+
+#mensajeModal{
+    color: #ffffff;
+    height: 6vh;
+    background-color: #F2911B;
+}

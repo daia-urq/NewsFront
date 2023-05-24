@@ -1,0 +1,72 @@
+.Gig-Poster-2022-2023-1-hex {
+    color: #4E74A6;
+}
+
+.Gig-Poster-2022-2023-2-hex {
+    color: #F2EFE9;
+}
+
+.Gig-Poster-2022-2023-3-hex {
+    color: #F2911B;
+}
+
+.Gig-Poster-2022-2023-4-hex {
+    color: #F27405;
+}
+
+.Gig-Poster-2022-2023-5-hex {
+    color: #D92211;
+}
+
+body{
+    margin: 0%;
+    padding: 0%;
+    box-sizing: border-box;
+}
+
+header>img{
+    width: 15vw;
+    height: auto;
+    margin: 1rem;
+}
+
+img{
+    height: 50vh;
+}
+
+.focus{
+    height:80vh;
+}
+
+.log{
+    height: 100vh;
+}
+
+#mensaje{
+    height: 5vh;
+}
+
+.shadow{
+    border-radius: 1rem;
+    color: #4E74A6;
+    font-size: medium;
+    font-weight: 700;
+    width: fit-content !important;
+    box-shadow: 19px 16px 64px -32px rgba(0, 0, 0, 0.64);
+    -webkit-box-shadow: 19px 16px 64px -32px rgba(0, 0, 0, 0.64);
+    -moz-box-shadow: 19px 16px 64px -32px rgba(0, 0, 0, 0.64);
+}
+
+.logaux{
+    height: 90vh;
+    min-width:50vw !important;
+}
+#formRegistro>div>input{
+    width: 40vw !important;
+}
+
+.nueva>a{
+    text-decoration: none;
+    font-size: medium; 
+    font-weight: 400;
+}

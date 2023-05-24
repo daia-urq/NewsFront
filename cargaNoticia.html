@@ -13,15 +13,17 @@
 
 <body>
     <header class="p-1 border-bottom">
-        <div class="container d-flex flex-wrap justify-content-between align-items-center">
-            <a href="./vistaNoticias.html"><span class="fs-3">Daia News</span></a>
-            <ul class="nav login">
-                <li><a href="#" class="p-2 m-1">Login</a></li>
-                <li><a href="#" class="m-1 p-2">Sign up</a></li>
-            </ul>
-
+        <div class="container d-flex flex-nowrap justify-content-between align-items-center">
+       
+            <a href="/"><span class="fs-3">Daia News</span></a>
+          
+    
+          <div id="nombre" class=" container d-flex flex-nowrap justify-content-end align-items-center ">
+    
+          </div>
+    
         </div>
-    </header>
+      </header>
     <main>
         <div id="mensaje" class="d-flex justify-content-center p-2">
 
@@ -43,6 +45,11 @@
                         <label for="imagen" class="form-label">Imagen</label>
                         <input type="text" class="form-control" id="imagen">
                     </div>
+                    <label for="categoria" class="form-label">Categoria</label>
+                    <select class="form-select" id="categoria" name="categoria">
+                                                                 
+                    </select>
+
                     <div class="d-flex justify-content-end">
                         <button type="submit" class="btn">Submit</button>
                     </div>
