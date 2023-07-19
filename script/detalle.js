@@ -28,23 +28,32 @@ async function obtenerrDatos() {
 function mostrarCard(noticia) {
   let noti = "";
 
-  noti= `<div id="cardDetail" class="card m-5">
-            <div >
-                <div >
-                    <img id="cardimg" src="https://www.salonlfc.com/wp-content/uploads/2018/01/image-not-found-1-scaled.png" alt="...">
-                </div>
-                <div class="d-flex flex-column justify-content-evenly align-items-start">
-                    <div class="card-body">
-                        <h2 class="card-title">${noticia.titulo}</h2>    
-                     </div>     
-                     <div class="card-body">
+  let parrafos = "";
+  
+  noticia.cuerpo.forEach((parrafo) => {
+    parrafos += `
+      <p class="card-text">${parrafo}</p>
+    `
+  });
 
-                        <p class="card-text">${noticia.categoria.nombre}</p>                      
-                        <p class="card-text">${noticia.fechaCreacion}</p>
-                        <p class="card-text">${noticia.cuerpo}</p>
-                    </div>         
-                </div>
-            </div>    
+  noti= `<div id="cardDetail" class="card m-5">          
+          <div>
+            <img id="cardimg" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSzj1TTBo4h-xChXl6C3_LPcZtcDLdUmfAyLA&usqp=CAU" alt="...">
+          </div>
+          <div class="container d-flex flex-wrap justify-content-around info">
+          <p>${noticia.categoria.nombre}</p>           
+          <p>${noticia.periodista.nombre} ${noticia.periodista.apellido}</p>                                
+          <p>${noticia.fechaCreacion}</p>   
+        </div>  
+          <div class="d-flex flex-column justify-content-evenly align-items-start">
+            <div class="card-body">
+              <h2 class="card-title">${noticia.titulo}</h2>    
+            </div>  
+            <div class="card-body">` 
+            + parrafos + 
+            `             
+            </div>     
+          </div>
         </div>`
     ;
 

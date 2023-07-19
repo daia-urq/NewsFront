@@ -14,22 +14,22 @@
 <body>
     <header class="p-1 border-bottom">
         <div class="container d-flex flex-nowrap justify-content-between align-items-center">
-       
-            <a href="/"><span class="fs-3">Daia News</span></a>
-          
-    
-          <div id="nombre" class=" container d-flex flex-nowrap justify-content-end align-items-center ">
-    
-          </div>
-    
+
+            <a href="./panelAdmin.html"><span class="fs-3">Daia News</span></a>
+
+
+            <div id="nombre" class=" container d-flex flex-nowrap justify-content-end align-items-center ">
+
+            </div>
+
         </div>
-      </header>
+    </header>
     <main>
         <div id="mensaje" class="d-flex justify-content-center p-2">
 
         </div>
         <div class="container d-flex flex-column justify-content-around align-items-center noticias">
-            <h1>Carga de noticia</h1>
+            <h1>Nueva noticia</h1>
 
             <div>
                 <form id="form">
@@ -37,21 +37,22 @@
                         <label for="titulo" class="form-label">Titulo</label>
                         <input type="text" class="form-control" id="titulo">
                     </div>
-                    <div class="">
-                        <label for="cuerpo">Cuerpo noticia</label>
-                        <textarea class="form-control" rows="5" id="cuerpo"></textarea>
+                    <div class="" id="textareaContainer">
+
                     </div>
+                    <button type="button" class="btn" id="addTextareaButton">Agregar párrafo</button>
+
                     <div class="">
                         <label for="imagen" class="form-label">Imagen</label>
                         <input type="text" class="form-control" id="imagen">
                     </div>
                     <label for="categoria" class="form-label">Categoria</label>
                     <select class="form-select" id="categoria" name="categoria">
-                                                                 
+
                     </select>
 
                     <div class="d-flex justify-content-end">
-                        <button type="submit" class="btn">Submit</button>
+                        <button type="submit" class="btn">Crear</button>
                     </div>
                 </form>
             </div>
@@ -68,7 +69,7 @@
         integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
         crossorigin="anonymous"></script>
     <script src="./script/funciones.js"></script>
-    <script src="./script/cargaNoticia.js"></script>
+    <script src="./script/nuevaNoticia.js"></script>
 </body>
 
 </html>

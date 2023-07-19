@@ -41,7 +41,7 @@ datos.addEventListener('submit', (e) => {
                 response.json().then(data => {
                     loginStorage(data);
                     let auth = JSON.stringify(data.authorities); 
-                    if(auth.includes("ROLE_ADMIN")){
+                    if(auth.includes("ROLE_ADMIN") || auth.includes("ROLE_PERIODISTA")){
                         window.location.href = "../panelAdmin.html";
                     }else{
                         window.location.href = "../vistaNoticias.html";

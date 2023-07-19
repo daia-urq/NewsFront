@@ -2,7 +2,6 @@ let contenedorLista = document.getElementById('tbody');
 let data;
 let barraMensaje = document.getElementById('mensaje');
 let nombreU = document.getElementById('nombre');
-
 obtenerDatos();
 
 async function obtenerDatos() {
@@ -20,19 +19,23 @@ async function obtenerDatos() {
 
 function mostrarLista(lista) {
     let noticia = "";
-    lista.forEach(aux => {
-      noticia += `
-      <tr>
-      <td>${aux.titulo}</th>
-      <td>${aux.fechaCreacion}</td>
-      <td>Proximamente</td>
-      <td>${aux.categoria.nombre}</td>
-      <td> <a href="./modificarNoticia.html?id=${aux.id}"><button type="button" class="button">
-          <i class="bi bi-pencil-square"></i></button></a>
-      <button class="button" type="button" onclick="deleteNoticia(${aux.id})">
-          <i class="bi bi-trash3"></i></button></td>          
-  </tr> `
-    });  
+
+ 
+      lista.forEach(aux => {
+        noticia += `
+        <tr>
+        <td>${aux.titulo}</th>
+        <td>${aux.fechaCreacion}</td>
+        <td>${aux.periodista.nombre} ${aux.periodista.apellido}</td>
+        <td>${aux.categoria.nombre}</td>
+        <td> <a href="./modificarNoticia.html?id=${aux.id}"><button type="button" class="button">
+            <i class="bi bi-pencil-square"></i></button></a>
+        <button class="button" type="button" onclick="deleteNoticia(${aux.id})">
+            <i class="bi bi-trash3"></i></button></td>          
+    </tr> `
+      });  
+    
+    
     contenedorLista.innerHTML = noticia;
   };
 

@@ -1,6 +1,5 @@
 function mostrarMensaje(aux, contenedor) { 
-    mensaje = `
-    <h5>${aux.mensaje}</h5> `
+    mensaje = `<p>${aux.mensaje}</p> `
   ;
   contenedor.innerHTML = mensaje;
 };
@@ -35,6 +34,16 @@ function logout(){
 
 function mostraNombre(){
   let nom = "" ;
-  nom = `<h6>Hola, ${localStorage.getItem('nombreUsuario')}</h6>` + `<button id="logoutButton" onclick="logout()" class="m-1 p-2">Salir</button>`;
+  nom = `<h6 onclick=window.location.href='./perfil.html?perfil=${localStorage.getItem("nombreUsuario")}'>Hola, ${localStorage.getItem('nombreUsuario')}</h6>` ;
+ 
+  if(localStorage.getItem('authorities').includes("ROLE_ADMIN") ||  localStorage.getItem('authorities').includes("ROLE_PERIODISTA")){
+    nom += `<button id="panel" class="m-1 p-2" onclick="redireccionar()">Panel</button>`;
+  }
+  nom += `<button id="logoutButton" onclick="logout()" class="m-1 p-2">Salir</button>`; 
+ 
   nombreU.innerHTML= nom;
+}
+
+function redireccionar() {
+  window.location.href = "../panelAdmin.html";
 }

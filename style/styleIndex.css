@@ -43,7 +43,16 @@ img{
 }
 
 #mensaje{
-    height: 5vh;
+    height: 5vh;    
+    background-image: linear-gradient(to right, #749aca, #4E74A6, #385881);
+    border-radius:0px 0px 0.4rem 0.4rem;
+    text-align: center;
+    
+}
+
+#mensaje>p{
+    padding-top: 1rem;
+    color: #F2EFE9;
 }
 
 .shadow{
@@ -57,6 +66,7 @@ img{
     -moz-box-shadow: 19px 16px 64px -32px rgba(0, 0, 0, 0.64);
 }
 
+
 .logaux{
     height: 90vh;
     min-width:50vw !important;
@@ -65,8 +75,15 @@ img{
     width: 40vw !important;
 }
 
+#formLogin > button, #formRegistro > button{
+    background-color: #0c1520;
+    color: #F2EFE9;
+    box-shadow: 2px 2px 4px 0 rgba(0, 0, 0, 0.5);
+}
+
 .nueva>a{
     text-decoration: none;
     font-size: medium; 
     font-weight: 400;
+    color: #749aca;
 }

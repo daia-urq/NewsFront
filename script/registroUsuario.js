@@ -1,10 +1,12 @@
 let datos = document.getElementById('formRegistro');
 let nombre = document.getElementById('nombre');
+let apellido = document.getElementById('apellido');
 let nombreUsuario = document.getElementById('nombreUsuario');
 let email = document.getElementById('email');
 let password = document.getElementById('password');
 let fechaNacimiento = document.getElementById('fechaNacimiento');
 let barraMensaje = document.getElementById('mensaje');
+let mensaje = '';
 let raw;
 let roles = "user";
 
@@ -13,6 +15,7 @@ myHeaders.append("Content-Type", "application/json");
 
 let nuevoUsuario = {
     nombre,
+    apellido,
     nombreUsuario,
     email,
     password,
@@ -26,6 +29,7 @@ datos.addEventListener('submit', (e) => {
     e.preventDefault();
     // Agregar nuevo valor a la propieda usuario
     nuevoUsuario.nombre = nombre.value;
+    nuevoUsuario.apellido = apellido.value;
     nuevoUsuario.nombreUsuario = nombreUsuario.value;
     nuevoUsuario.email = email.value;
     nuevoUsuario.password = password.value;
@@ -33,6 +37,7 @@ datos.addEventListener('submit', (e) => {
     nuevoUsuario.roles = roles;
 
     nombre.value = '';
+    apellido.value = '';
     nombreUsuario.value = '';
     email.value = '';
     password.value = '';
@@ -59,10 +64,15 @@ datos.addEventListener('submit', (e) => {
                 });
             } else {
                 response.json().then(error => {
-                    mostrarMensaje(error, barraMensaje);
+                    console.log(error)
+                    mensaje = `<p>` + error.mensaje + `</p>`;
+                    barraMensaje.innerHTML = mensaje;
+                    setTimeout(() => {
+                        mensaje = '';
+                    }, 1000);
                 });
             }
         })
-        .catch(error => console.log('error', error));
+        .catch(error => console.log('Error', error));
 
 });

@@ -18,7 +18,7 @@
     color: #D92211;
 }
 
-body{
+body {
     margin: 0%;
     padding: 0%;
     box-sizing: border-box;
@@ -30,40 +30,46 @@ body{
 }
 
 header {
-    background-color: #b82012;
+    background-image: linear-gradient(to right, #749aca, #4E74A6, #385881);
 }
 
-a{
+.nav li a {
+    color: #244166 !important;
+}
+
+a {
     color: #F2EFE9 !important;
     text-decoration: none !important;
 }
 
-
 a.seleccionado {
-    background-color: #F2911B;
+    background: #bdbdbd;
     border-radius: 1rem;
     font-weight: bold;
 }
 
 .busqueda {
+    color: #244166;
     border-radius: 0.5rem;
     border-color: transparent;
 }
 
-#nombre>button{
-    background-color:#ffffff;
-    color: #b82012;
+#nombre>button {
+    background-color: #f5f5f5;
+    color: #244166;
     border: none;
     border-radius: 1rem;
     font-weight: 500;
 }
-#nombre>h6{
+
+#nombre>h6 {
+    cursor: pointer;
     color: #ffffff;
     margin-right: 1rem;
-    padding-top: 0.3rem ;
+    padding-top: 0.3rem;
 }
 
-header>div>a>span{
+header>div>a>span {
     min-width: max-content;
     display: block;
 }
@@ -73,23 +79,43 @@ header>div>a>span{
 }
 
 .card>img {
-    max-height: 20vh;
+    max-height: 25vh;
     object-fit: cover;
 }
 
-.card-body>h4 {
-    font-size: medium;
+.titulo>h4 {
+    font-size: large;
 }
 
 .card {
-    background-color: #dbdbdb !important;
-    color: #244166 !important;
+    background-color: #fdf9f3 !important;
+    color: #4E74A6 !important;
+    font-weight: 600;
     width: 300px !important;
-    height: 300px !important;
+    height: 350px !important;
+    box-shadow: 5px 5px 50px 50px rgba(201, 201, 201, 0.64);
+    -webkit-box-shadow: 5px 5px 12px 1px rgba(201, 201, 201, 0.64);
+}
+
+.titulo {
+    height: 60%;
+}
+
+.nombre {
+    height: 10%;
+    color: #F2911B;
+    font-style: italic;
+    padding-top: 0.5rem;
+}
+
+.fecha {
+    height: 10%;
+    color: #385881;
+    font-weight: 700;
 }
 
 /* carga Noticias*/
-#form{
+#form {
     min-width: 50vw;
     font-size: medium;
     font-weight: 700;
@@ -108,6 +134,7 @@ header>div>a>span{
     padding-top: 2rem;
 }
 
+/* formulario de carga de noticias */
 .noticias {
     border: 1px solid;
     border-color: #F27405;
@@ -121,37 +148,48 @@ header>div>a>span{
     -moz-box-shadow: 19px 16px 64px -32px rgba(0, 0, 0, 0.64);
 }
 
-.btn {
+.btn,
+.perfil>button {
     margin-top: 1rem;
-    background-color: #F2911B !important;
+    margin-right: 1rem;
+    background-color: #0c1520 !important;
     color: #F2EFE9 !important;
     font-weight: 600 !important;
     margin-bottom: 1rem;
+    
+    box-shadow: 2px 2px 4px 0 rgba(0, 0, 0, 0.5);
 }
 
+.perfil>button {
+    border: none;
+    border-radius: 1rem;
+}
+
+/* card de pagina de detalle de noticia */
 #cardDetail {
-    background-color: #ffffff !important;
-    width: 70vw !important;
-    min-height: 90vh !important;
+    width: 50vw !important;
+    height: max-content !important;
     color: #4E74A6 !important;
     font-weight: 500;
     border: none;
     text-align: justify;
 }
 
-#cardDetail>div>div>div>h2 {
+#cardDetail>div>div>h2 {
     color: #F27405 !important;
-    margin-top: 2rem;
+    margin-top: 1rem;
     margin-bottom: 2rem;
     font-weight: bold;
 }
 
-#cardDetail>div>div>div>p {
-    text-indent: 3%;
+.info>p {
+    margin-top: 1rem;
+    color: #749aca;
+    padding-right: 1rem;
 }
 
 #cardimg {
-    border-radius: 0% !important;
+    border-radius:0.4rem 0.4rem 0px 0px ;
     object-fit: cover;
     width: 100%;
     height: 40vh;
@@ -160,8 +198,8 @@ header>div>a>span{
 
 .footer {
     margin-top: 2rem;
-    background-color: #b82012;
-    color: #F2EFE9 !important;
+    background-image: linear-gradient(to right, #749aca, #4E74A6, #385881);
+    color: #0c1520 !important;
 }
 
 header {
@@ -179,55 +217,91 @@ ul.demo {
 }
 
 .navegacion {
-    background-color: #F27405;
+    background-image: linear-gradient(to right, #f5f5f5, #d1d1d1);
     color: #F2EFE9;
+    box-shadow: 0 1px 10px 0 rgba(0, 0, 0, 0.2);
 }
 
-#mensaje, #mensajeAdmin{
-    min-height: 35px;
-    background-color: #4E74A6;
+#mensaje,
+#mensajeAdmin {
+    min-height: 40px;
+    background-image: linear-gradient(to right, #f5f5f5, #d1d1d1);
     color: #F2EFE9;
+    box-shadow: 0 1px 10px 0 rgba(0, 0, 0, 0.2);
 }
-#mensajeAdmin{
+
+#mensajeAdmin {
     background-color: #F27405 !important;
 }
 
-.agregar{
+.agregar {
     height: 8vh;
     margin: 1rem;
 }
 
-.agregar>button ,.button, .agregar>a>button{
+.agregar>button,
+.button,
+.agregar>a>button {
     background-color: transparent;
     border: none;
 }
-.agregar>button, .agregar>a>button{
+
+.agregar>button,
+.agregar>a>button {
     font-size: x-large;
 }
 
-.table{
+
+.table {
     padding: 1rem;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     border-radius: 1rem;
 }
 
-table{
+table {
     color: #244166;
     text-decoration: none;
     width: 100%;
-    border-color: #F2911B!important;
+    border-color: #F2911B !important;
 }
 
-#formCategoria{
+#formCategoria {
     width: 90%;
 }
 
-.modal{
+.modal {
     color: #244166;
 }
 
-#mensajeModal{
-    color: #ffffff;
+#mensajeModal {
     height: 6vh;
-    background-color: #F2911B;
+    background-image: linear-gradient(to right, #749aca, #4E74A6, #385881);
+    border-radius:0px 0px 0.4rem 0.4rem;
+}
+
+#perfil {
+    height: 50vh;
+    margin-right: 3rem;    
+    box-shadow: 2px 2px 4px 0 rgba(0, 0, 0, 0.5);
+}
+
+.perfil {
+    margin-top: 3rem;
+    height: 70vh;
+    color: #244166;
+}
+
+.perfil>div>p {
+    color: #F27405;
+    font-weight: 700;
+    font-size: large;
+}
+
+#formRegistro>div>input {
+    color: #F27405 !important;
+}
+
+#formRegistro>button {
+    background-color: #0c1520;
+    box-shadow: 2px 2px 4px 0 rgba(0, 0, 0, 0.5);
 }
