@@ -23,9 +23,7 @@ async function obtenerDatos() {
             listaCategorias = await response.json();
         } catch (error) {
             console.log(error);
-        }
-        const response = await fetch(urlApi)
-        noticiaLista = await response.json();
+        }        
         noticia = noticiaLista.find(aux => aux.id == id)
         console.log(noticia);
         mostrarForm(noticia, listaCategorias);

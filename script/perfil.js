@@ -1,16 +1,26 @@
-let nombreU = document.getElementById('nombre');
 const query = location.search;
 let parametro = new URLSearchParams(query);
 let perfil = parametro.get("perfil");
-let datosPefil = document.getElementById('datosPerfil');
-let form = document.getElementById('formRegistro');
-let token = localStorage.getItem('token');
-let raw;
+let nombreU = document.getElementById('nombre');
 let barraMensaje = document.getElementById('mensajeModal');
+let datosPefil = document.getElementById('datosPerfil');
 let mensaje = '';
 
-if (localStorage.getItem('nombreUsuario')) {
-    mostraNombre();
+let form = document.getElementById('formRegistro');
+
+let envioInfo;
+let changePasswordCheckbox;
+let passwordFieldsContainer;
+let nuevaContraseña;
+
+mostraNombre();
+
+function togglePasswordFields() {
+    if (changePasswordCheckbox.checked) {
+        passwordFieldsContainer.style.display = 'block';
+    } else {
+        passwordFieldsContainer.style.display = 'none';       
+    }
 }
 
 var requestOptions = {
@@ -22,7 +32,6 @@ fetch("http://localhost:8080/auth/getOne/" + perfil, requestOptions)
     .then(response => {
         if (response.ok) {
             response.json().then(data => {
-                console.log(data);
                 mostrarDatos(data);
                 editar(data);
             })
@@ -57,24 +66,40 @@ function editar(data) {
         <input type="email" class="form-control" id="email" placeholder="Email" name="email" value= ${data.email}>
     </div>              
     <div class="mb-3">
-        <label for="password" class="form-label">password:</label>
-        <input type="password" class="form-control" id="password" placeholder="password" name="password" >
+        <label for="changePassword" class="form-check-label">Cambiar contraseña:</label>
+        <input type="checkbox" class="form-check-input" id="changePassword"
+        name="changePassword">
+    </div>
+    <div id="passwordFields" style="display: none;">
+        <div class="mb-3">
+            <label for="password" class="form-label">Nueva contraseña:</label>
+            <input type="password" class="form-control" id="password"
+            placeholder="Nueva contraseña" name="password">
+        </div>        
     </div>  
     <div class="mb-3">
         <label for="fechaNacimiento" class="form-label">Fecha nacimiento:</label>
         <input type="date" class="form-control" id="fechaNacimiento" name="fechaNacimiento"
         min="1923-01-01" max="2004-12-31" value=${data.fechaNacimiento}>
     </div>
-    <button type="submit" class="btn">Editar</button>
+    <button type="submit" class="btn">Modificar</button>
     `
     form.innerHTML = campos;
 
-    // Agregar el event listener después de que el elemento selcategoria existe en el documento
+    changePasswordCheckbox = document.getElementById('changePassword');
+    passwordFieldsContainer = document.getElementById('passwordFields');    
 
-
-
+    changePasswordCheckbox.addEventListener('change', togglePasswordFields);
 }
 
+function limpiarFormulario() {
+    nombre.value = '';
+    apellido.value = '';
+    nombreUsuario.value = '';
+    email.value = '';
+    password.value = '';
+    fechaNacimiento.value = '';
+}
 
 function mostrarDatos(data) {
     let datos = "";
@@ -105,16 +130,15 @@ myHeaders.append("Content-Type", "application/json");
 
 form.addEventListener('submit', (e) => {
     e.preventDefault();
-    let nombre2 = document.getElementById('nombre2').value;
+    let nombre = document.getElementById('nombre2').value;
     let apellido = document.getElementById('apellido').value;
     let nombreUsuario = document.getElementById('nombreUsuario').value;
     let email = document.getElementById('email').value;
-    let password = document.getElementById('password').value;
     let fechaNacimiento = document.getElementById('fechaNacimiento').value;
     let id = document.getElementById('id').value;
+    newPasswordInput = document.getElementById('password');
 
-
-    nuevoUsuario = { // Inicializar nuevoUsuario con los valores
+    nuevoUsuario = { 
         nombre,
         apellido,
         nombreUsuario,
@@ -123,34 +147,38 @@ form.addEventListener('submit', (e) => {
         fechaNacimiento
     };
 
+    if (changePasswordCheckbox.checked) {
+        nuevoUsuario.password = newPasswordInput.value;
+    }else{
+        nuevoUsuario.password = null;
+    }
 
-    nuevoUsuario.nombre = nombre2
+    nuevoUsuario.nombre = nombre;
     nuevoUsuario.apellido = apellido;
     nuevoUsuario.nombreUsuario = nombreUsuario;
     nuevoUsuario.email = email;
-    nuevoUsuario.password = password;
     nuevoUsuario.fechaNacimiento = fechaNacimiento;
 
-    raw = JSON.stringify(nuevoUsuario);
+    envioInfo = JSON.stringify(nuevoUsuario);
 
     let requestOptions2 = {
         method: 'PUT',
         headers: myHeaders,
-        body: raw,
+        body: envioInfo,
         redirect: 'follow'
     };
 
-    fetch("http://localhost:8080/auth/update/" + id, requestOptions2)       
+    fetch("http://localhost:8080/auth/update/" + id, requestOptions2)
         .then(response => {
             if (response.ok) {
                 response.json().then(data => {
                     mostrarMensaje(data, barraMensaje);
-                    console.log(data);
-                    localStorage.setItem('nombreUsuario', nombreUsuario); 
-                    let = nom = localStorage.getItem('nombreUsuario');
+                    perfil = nuevoUsuario.nombreUsuario;                   
+                    localStorage.setItem('nombreUsuario', nuevoUsuario.nombreUsuario);
+                    limpiarFormulario();
                     setTimeout(() => {
-                        window.location.href = `./perfil.html?perfil=${nom}`;
-                    }, 3000);
+                        window.location.href = `./perfil.html?perfil=${perfil}`;
+                    }, 1000);
                 });
             } else {
                 response.json().then(error => {
@@ -160,4 +188,7 @@ form.addEventListener('submit', (e) => {
             }
         })
         .catch(error => console.error('Error:', error));
-    });
+});
+
+
+

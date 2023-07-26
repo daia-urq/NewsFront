@@ -1,12 +1,12 @@
 let datos = document.getElementById('formCategoria');
-let nombre = document.getElementById('nombre');
+let nombre = document.getElementById('nombreCat');
 let modalMensaje = document.getElementById('mensajeModal');
 
 let raw;
 let myHeaders = new Headers();
 myHeaders.append("Content-Type", "application/json");
 
-let objeto = {
+let categoria = {
     nombre
 }
 
@@ -15,13 +15,13 @@ datos.addEventListener('submit', (e) => {
     e.preventDefault();
 
     // Sobreescribir propiedad existente
-    objeto.nombre = nombre.value;
-
+    categoria.nombre = nombre.value;
+    console.log(nombre);
+    console.log(categoria);
     //reinicio de variables
-    nombre.value = '';
 
     //objeto a json
-    raw = JSON.stringify(objeto);
+    raw = JSON.stringify(categoria);
 
     var requestOptions = {
         method: 'POST',
@@ -34,14 +34,16 @@ datos.addEventListener('submit', (e) => {
         .then(response => {
             if (response.ok) {
                 response.json().then(data => {
-                    mostrarMensaje(data, modalMensaje);
+                    mensaje = `<p>` + data.mensaje + `</p>`;
+                    mensajeModal.innerHTML = mensaje;                    
                     setTimeout(() => {
                         window.location.href = "./panelAdmin.html";
-                    }, 3000);
+                    }, 1000);
                 });
             } else {
                 response.json().then(error => {
-                    mostrarMensaje(error, barraMensaje);
+                    console.log(error);
+                    mostrarMensaje(error, modalMensaje);
                 });
             }
         })

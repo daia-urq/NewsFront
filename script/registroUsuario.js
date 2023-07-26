@@ -64,12 +64,8 @@ datos.addEventListener('submit', (e) => {
                 });
             } else {
                 response.json().then(error => {
-                    console.log(error)
                     mensaje = `<p>` + error.mensaje + `</p>`;
-                    barraMensaje.innerHTML = mensaje;
-                    setTimeout(() => {
-                        mensaje = '';
-                    }, 1000);
+                    barraMensaje.innerHTML = mensaje;                  
                 });
             }
         })

@@ -19,19 +19,18 @@ async function obtenerDatos() {
 
 function mostrarLista(lista) {
     let noticia = "";
-
  
       lista.forEach(aux => {
         noticia += `
         <tr>
-        <td>${aux.titulo}</th>
+        <td id="itemNoticia" onclick="redireccionar(${aux.id})">${aux.titulo}</td>
         <td>${aux.fechaCreacion}</td>
         <td>${aux.periodista.nombre} ${aux.periodista.apellido}</td>
         <td>${aux.categoria.nombre}</td>
-        <td> <a href="./modificarNoticia.html?id=${aux.id}"><button type="button" class="button">
-            <i class="bi bi-pencil-square"></i></button></a>
+        <td> 
         <button class="button" type="button" onclick="deleteNoticia(${aux.id})">
-            <i class="bi bi-trash3"></i></button></td>          
+            <i class="bi bi-trash3" style="color:#F2911B;"></i></button> 
+        </td>            
     </tr> `
       });  
     
@@ -40,6 +39,9 @@ function mostrarLista(lista) {
   };
 
 
+  function redireccionar(id) {
+    window.location.href = `./detalle.html?id=${id}`;
+  }
   function deleteNoticia(id) {    
     fetch('http://localhost:8080/noticia/delete/' + id, {
       method: 'DELETE'

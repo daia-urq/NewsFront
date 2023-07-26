@@ -12,15 +12,9 @@ async function obtenerDatos() {
     data = await response.json();
     // console.log(data);
     mostrarNoticias(data);
-    console.log(localStorage)
     if (localStorage.getItem('nombreUsuario')) {
       mostraNombre();
-    }        
-
-    if(localStorage.getItem('authorities').includes("ROLE_ADMIN")){
-      console.log("soy admin")
-    }
-    
+    }      
   } catch (error) {
     console.log(error);
   }
