@@ -2,45 +2,52 @@ const query = location.search;
 let parametro = new URLSearchParams(query);
 let id = parametro.get("id");
 let urlApi = 'http://localhost:8080/noticia/list';
+let nombreU = document.getElementById('nombre');
 let data;
 let formulario = document.getElementById('formulario');
 let barraMensaje = document.getElementById('mensaje');
 
-let noticia;
+let nextIndex = 1;
+let noticiaLista;
+let categoriaLista;
+
 let cuerpo;
 let textareaValues;
 let listaCategorias;
-let categoria = {};
+let categoria;
 let selectedOption;
 let valor2;
 
-obtenerDatos();
+let noticia = {
+    titulo: '',
+    cuerpo: [],
+    imagen: '',
+    categoria: {},
+    creador: null
+}
 
-async function obtenerDatos() {
+mostraNombre();
+obtenerDatos();
+obtenerCategorias()
+
+async function obtenerCategorias() {
     try {
-        try {
-            const response = await fetch('http://localhost:8080/categoria/list')
-            listaCategorias = await response.json();
-        } catch (error) {
-            console.log(error);
-        }        
-        noticia = noticiaLista.find(aux => aux.id == id)
-        console.log(noticia);
-        mostrarForm(noticia, listaCategorias);
+        const response = await fetch('http://localhost:8080/categoria/list')
+        categoriaLista = await response.json();
     } catch (error) {
         console.log(error);
     }
 }
 
-function obtenesValorTextArea() {
-    var valortextArea = [];
-    var textareas = document.querySelectorAll(".textArea");
-
-    textareas.forEach(function (textarea) {
-        valortextArea.push(textarea.value);
-    });
-
-    return valortextArea;
+async function obtenerDatos() {
+    try {
+        const response = await fetch(urlApi)
+        data = await response.json();
+        noticia = data.find(aux => aux.id == id);
+        mostrarForm(noticia, categoriaLista);
+    } catch (error) {
+        console.log(error);
+    }
 }
 
 function mostrarForm(noticia, lista) {
@@ -48,7 +55,7 @@ function mostrarForm(noticia, lista) {
         id: noticia.categoria.id,
         nombre: noticia.categoria.nombre
     };
-    console.log(categoria);
+
     let categoriaActual = noticia.categoria;
     let form = "";
     let option = "";
@@ -58,7 +65,7 @@ function mostrarForm(noticia, lista) {
 
     form = ` 
     <form id="form">
-        <div class="">
+        <div class="" style="display: none;">
             <label for="periodista" class="form-label">Id</label>
             <input type="text" class="form-control" id="periodista" value="${noticia.periodista.id}">
         </div>
@@ -66,9 +73,11 @@ function mostrarForm(noticia, lista) {
             <label for="titulo" class="form-label">Titulo</label>
             <input type="text" class="form-control" id="titulo" value="${noticia.titulo}">
         </div>
-         <div id="textareaContainer">
+        <div class="" id="textareaContainer">
 
-         </div>
+        </div>
+        <button type="button" class="btn" id="addTextareaButton">Agregar párrafo</button>
+
         <div class="">
             <label for="imagen" class="form-label">Imagen</label>
             <input type="text" class="form-control" id="imagen" value="${noticia.imagen}">
@@ -83,16 +92,17 @@ function mostrarForm(noticia, lista) {
             <button type="submit" class="btn">Submit</button>
         </div>
     </form>`
+
     formulario.innerHTML = form;
-
-
-    let nextIndex = 1;
+    
+    nextIndex = 1;
     // Obtener el contenedor donde se agregarán los <textarea>
     let contenedor = document.getElementById("textareaContainer");
     // Borrar contenido previo del contenedor (si lo hay)
     contenedor.innerHTML = "";
     // Recorrer el array y crear los <textarea>
     noticia.cuerpo.forEach(element => {
+        console.log("a");
         var label = document.createElement("label");
         label.setAttribute("for", "cuerpo" + nextIndex);
         label.textContent = "Parrafo " + nextIndex;
@@ -124,6 +134,10 @@ function mostrarForm(noticia, lista) {
         };
         console.log(categoria);
     });
+
+    let addTextareaButton = document.getElementById("addTextareaButton");
+    addTextareaButton.addEventListener("click", agregarTextArea);
+
     document.getElementById('formulario').addEventListener('submit', modificarNoticia);
 }
 
@@ -131,13 +145,13 @@ document.getElementById("formulario").addEventListener("submit", function (event
     event.preventDefault();
     textareaValues = obtenesValorTextArea();
     cuerpo = textareaValues;
+    let cuerpoFiltrado = cuerpo.filter((elemento) => elemento !== "");
+    cuerpo = cuerpoFiltrado;
 });
 
 
 function modificarNoticia() {
     event.preventDefault();
-    let textareaValues = obtenesValorTextArea();
-    let cuerpo = textareaValues; // Asignar el valor del textarea a la variable cuerpo
     let creador = document.getElementById('periodista').value;
     let titulo = document.getElementById('titulo').value;
     let imagen = document.getElementById('imagen').value;
@@ -161,7 +175,7 @@ function modificarNoticia() {
                 response.json().then(data => {
                     mostrarMensaje(data, barraMensaje);
                     setTimeout(() => {
-                        window.location.href = "./listarNoticias.html";
+                        window.location.href = "./panelPeriodista.html";
                     }, 3000);
                 });
             } else {
@@ -171,5 +185,40 @@ function modificarNoticia() {
             }
         })
         .catch(error => console.error('Error:', error));
+}
+
+function obtenesValorTextArea() {
+    var valortextArea = [];
+    var textareas = document.querySelectorAll(".textArea");
+
+    textareas.forEach(function (textarea) {
+        valortextArea.push(textarea.value);
+    });
+
+    return valortextArea;
+}
+
+function agregarTextArea() {
+    let container = document.getElementById("textareaContainer");
+
+    var div = document.createElement("div");
+    div.classList.add("container-textarea");
+
+    var label = document.createElement("label");
+    label.setAttribute("for", "cuerpo" + nextIndex);
+    label.textContent = "Parrafo " + nextIndex;
+
+    var textarea = document.createElement("textarea");
+    textarea.classList.add("textArea");
+    textarea.setAttribute("rows", "5");
+    textarea.setAttribute("id", "cuerpo" + nextIndex);
+    textarea.setAttribute("placeholder", "Escribe aquí...");
+    textarea.style.display = "block";
+    textarea.style.minWidth = "-webkit-fill-available";
+
+    div.appendChild(label);
+    div.appendChild(textarea);
+    container.appendChild(div);
+    nextIndex++;
 }
 

@@ -5,8 +5,8 @@ let selcategoria = document.getElementById('categoria');
 let barraMensaje = document.getElementById('mensaje');
 let nombreU = document.getElementById('nombre');
 
-let textareaValues;
 let creador;
+let textareaValues;
 let listaCategorias;
 let categoria;
 let selectedOption;
@@ -54,8 +54,6 @@ async function obtenerPeriodista() {
     console.log(error);
   }
 }
-
-
 
 let myHeaders = new Headers();
 myHeaders.append("Content-Type", "application/json");
@@ -107,10 +105,9 @@ datos.addEventListener("submit", async function (e) {
     if (response.ok) {
       let data = await response.json();
       mostrarMensaje(data, barraMensaje);
-      // Una vez creada la noticia, vuelve a la lista de noticias
       setTimeout(() => {
-        window.location.href = "./listarNoticias.html";
-      }, 3000);
+        window.location.href = "./panelPeriodista.html";
+      }, 1500);
     } else {
       let error = await response.json();
       mostrarMensaje(error, barraMensaje);

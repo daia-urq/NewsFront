@@ -48,4 +48,3 @@ function mostrarNoticias(lista) {
   }
   contenedorCard.innerHTML = cardHtml;
 };
-
